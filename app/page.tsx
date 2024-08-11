@@ -1,14 +1,68 @@
-// "use client";
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import React from "react";
 import NavBar from "@/components/navbar";
-import { Phone, Mail, Globe, ChevronUp } from "lucide-react";
 import SiteFooter from "@/components/footer";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+
+const investmentOptions = [
+  {
+    value: "2,50,000-5,00,000",
+    label: "2,50,000 $ - 5,00,000 $ USD",
+  },
+  {
+    value: "5,00,000-10,00,000",
+    label: "5,00,000 $ - 10,00,000 $ USD",
+  },
+  {
+    value: "10,00,000-15,00,000",
+    label: "10,00,000 $ - 15,00,000 $ USD",
+  },
+  {
+    value: "20,00,000-more",
+    label: "20,00,000 $ USD & more",
+  },
+];
+
+const investmentTypes = [
+  {
+    value: "apartments",
+    label: "Apartments",
+  },
+  {
+    value: "town-house",
+    label: "Town House",
+  },
+  {
+    value: "villa",
+    label: "Villa",
+  },
+  {
+    value: "commercial",
+    label: "Commercial",
+  },
+];
 
 export default function ContactFormWithVideo() {
+  const [openInvestment, setOpenInvestment] = React.useState(false);
+  const [openType, setOpenType] = React.useState(false);
+  const [selectedInvestment, setSelectedInvestment] = React.useState<{ value: string; label: string; } | null>(null);
+  const [selectedInvestmentType, setSelectedInvestmentType] = React.useState<{ value: string; label: string; } | null>(null);
+
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
@@ -28,13 +82,85 @@ export default function ContactFormWithVideo() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <Input type="text" placeholder="Name" className="w-full" />
-
-                <Input type="text" placeholder="Occupation" className="w-full" />
                 <Input
-                  type="number"
-                  placeholder="Annual Income"
+                  type="text"
+                  placeholder="Occupation"
                   className="w-full"
                 />
+                <div className="my-4">
+                  <Popover open={openInvestment} onOpenChange={setOpenInvestment}>
+                    <PopoverTrigger asChild>
+                      <Button className="w-full justify-start bg-white text-gray-500 border">
+                        {selectedInvestment
+                          ? selectedInvestment.label
+                          : "+ Select Investment Range"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="p-0" side="bottom" align="start">
+                      <Command>
+                        <CommandInput placeholder="Select range..." />
+                        <CommandList>
+                          <CommandEmpty>No results found.</CommandEmpty>
+                          <CommandGroup>
+                            {investmentOptions.map((option) => (
+                              <CommandItem
+                                key={option.value}
+                                value={option.value}
+                                onSelect={(value) => {
+                                  setSelectedInvestment(
+                                    investmentOptions.find(
+                                      (opt) => opt.value === value
+                                    ) || null
+                                  );
+                                  setOpenInvestment(false);
+                                }}
+                              >
+                                {option.label}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+                <div className="my-4">
+                  <Popover open={openType} onOpenChange={setOpenType}>
+                    <PopoverTrigger asChild>
+                      <Button className="w-full justify-start bg-white text-gray-500 border">
+                        {selectedInvestmentType
+                          ? selectedInvestmentType.label
+                          : "+ Select Investment Type"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="p-0" side="bottom" align="start">
+                      <Command>
+                        <CommandInput placeholder="Select type..." />
+                        <CommandList>
+                          <CommandEmpty>No results found.</CommandEmpty>
+                          <CommandGroup>
+                            {investmentTypes.map((type) => (
+                              <CommandItem
+                                key={type.value}
+                                value={type.value}
+                                onSelect={(value) => {
+                                  setSelectedInvestmentType(
+                                    investmentTypes.find(
+                                      (opt) => opt.value === value
+                                    ) || null
+                                  );
+                                  setOpenType(false);
+                                }}
+                              >
+                                {type.label}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                </div>
                 <Input type="email" placeholder="Email" className="w-full" />
                 <Input
                   type="text"
