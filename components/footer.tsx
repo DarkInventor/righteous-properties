@@ -33,10 +33,10 @@ function SiteFooter() {
             <img src="/whatsapp-icon.png" alt="Whatsapp" className="mr-2" style={{ width: 16, height: 16 }} />
             +971 549961779
           </p>
-          <p className="flex items-center mb-2">
+          <a href="mailto:info@righteousproperties.ae" className="flex items-center mb-2 hover:underline">
             <Mail size={16} className="mr-2" />
             info@righteousproperties.ae
-          </p>
+          </a>
           <a href="http://www.righteousproperties.ae" className="flex items-center mb-2 hover:underline">
             <Globe size={16} className="mr-2" />
             www.righteousproperties.ae
