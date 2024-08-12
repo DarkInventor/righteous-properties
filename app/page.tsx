@@ -70,7 +70,7 @@ export default function ContactFormWithVideo() {
       <div className="flex-grow mb-10 mt-10">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
           <div className="md:w-[60%] w-full mx-auto">
-            <video autoPlay muted loop className="w-full h-full">
+            <video autoPlay muted loop playsInline className="w-full h-full">
               <source src="/righteous-vid.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
