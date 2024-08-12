@@ -77,110 +77,103 @@ export default function ContactFormWithVideo() {
           </div>
           <div className="w-full md:w-[400px] flex flex-col justify-center items-center mx-auto">
             <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-10 lg:mr-20">
-              <CardHeader>
-                <CardTitle>How can we reach you?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Input type="text" placeholder="Name" className="w-full" />
-                <Input
-                  type="text"
-                  placeholder="Occupation"
-                  className="w-full"
-                />
-                <div className="my-4">
-                  <Popover open={openInvestment} onOpenChange={setOpenInvestment}>
-                    <PopoverTrigger asChild>
-                      <Button className="w-full justify-start bg-white text-gray-500 border">
-                        {selectedInvestment
-                          ? selectedInvestment.label
-                          : "+ Select Investment Range"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="p-0" side="bottom" align="start">
-                      <Command>
-                        <CommandInput placeholder="Select range..." />
-                        <CommandList>
-                          <CommandEmpty>No results found.</CommandEmpty>
-                          <CommandGroup>
-                            {investmentOptions.map((option) => (
-                              <CommandItem
-                                key={option.value}
-                                value={option.value}
-                                onSelect={(value) => {
-                                  setSelectedInvestment(
-                                    investmentOptions.find(
-                                      (opt) => opt.value === value
-                                    ) || null
-                                  );
-                                  setOpenInvestment(false);
-                                }}
-                              >
-                                {option.label}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-                <div className="my-4">
-                  <Popover open={openType} onOpenChange={setOpenType}>
-                    <PopoverTrigger asChild>
-                      <Button className="w-full justify-start bg-white text-gray-500 border">
-                        {selectedInvestmentType
-                          ? selectedInvestmentType.label
-                          : "+ Select Investment Type"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="p-0" side="bottom" align="start">
-                      <Command>
-                        <CommandInput placeholder="Select type..." />
-                        <CommandList>
-                          <CommandEmpty>No results found.</CommandEmpty>
-                          <CommandGroup>
-                            {investmentTypes.map((type) => (
-                              <CommandItem
-                                key={type.value}
-                                value={type.value}
-                                onSelect={(value) => {
-                                  setSelectedInvestmentType(
-                                    investmentTypes.find(
-                                      (opt) => opt.value === value
-                                    ) || null
-                                  );
-                                  setOpenType(false);
-                                }}
-                              >
-                                {type.label}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-                <Input type="email" placeholder="Email" className="w-full" />
-                <Input
-                  type="text"
-                  placeholder="Contact Number"
-                  className="w-full"
-                />
-                <div className="flex space-x-4">
-                  <Input
-                    type="text"
-                    placeholder="Property Type (e.g., House, Apartment)"
-                    className="w-1/2"
-                  />
-                  <Input
-                    type="text"
-                    placeholder="Number of Bedrooms"
-                    className="w-1/2"
-                  />
-                </div>
-                <Button className="w-full hover:bg-primary/80">Submit Survey</Button>
-              </CardContent>
+              <form action="https://submit-form.com/oZnCQKeCf" className="space-y-4">
+                <CardHeader>
+                  <CardTitle>How can we reach you?</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <Input type="text" placeholder="Name" name="name" className="w-full" required />
+                  <Input type="email" placeholder="Email" name="email" className="w-full" required />
+                  <div className="my-4">
+                    <Popover open={openInvestment} onOpenChange={setOpenInvestment}>
+                      <PopoverTrigger asChild>
+                        <Button className="w-full justify-start bg-white text-gray-500 border">
+                          {selectedInvestment ? selectedInvestment.label : "+ Select Investment Range"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="p-0" side="bottom" align="start">
+                        <Command>
+                          <CommandInput placeholder="Select range..." />
+                          <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                              {investmentOptions.map((option) => (
+                                <CommandItem
+                                  key={option.value}
+                                  value={option.value}
+                                  onSelect={(value) => {
+                                    setSelectedInvestment(
+                                      investmentOptions.find(
+                                        (opt) => opt.value === value
+                                      ) || null
+                                    );
+                                    setOpenInvestment(false);
+                                  }}
+                                >
+                                  {option.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                    <input type="hidden" name="investment-range" value={selectedInvestment ? selectedInvestment.value : ''} />
+                  </div>
+                  <div className="my-4">
+                    <Popover open={openType} onOpenChange={setOpenType}>
+                      <PopoverTrigger asChild>
+                        <Button className="w-full justify-start bg-white text-gray-500 border">
+                          {selectedInvestmentType ? selectedInvestmentType.label : "+ Select Investment Type"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="p-0" side="bottom" align="start">
+                        <Command>
+                          <CommandInput placeholder="Select type..." />
+                          <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                              {investmentTypes.map((type) => (
+                                <CommandItem
+                                  key={type.value}
+                                  value={type.value}
+                                  onSelect={(value) => {
+                                    setSelectedInvestmentType(
+                                      investmentTypes.find(
+                                        (opt) => opt.value === value
+                                      ) || null
+                                    );
+                                    setOpenType(false);
+                                  }}
+                                >
+                                  {type.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                    <input type="hidden" name="investment-type" value={selectedInvestmentType ? selectedInvestmentType.value : ''} />
+                  </div>
+                  <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" />
+                  <div className="flex space-x-4">
+                    <Input
+                      type="text"
+                      placeholder="Property Type (e.g., House, Apartment)"
+                      name="property-type"
+                      className="w-1/2"
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Number of Bedrooms"
+                      name="bedrooms"
+                      className="w-1/2"
+                    />
+                  </div>
+                  <Button type="submit" className="w-full hover:bg-primary/80">Submit Survey</Button>
+                </CardContent>
+              </form>
             </Card>
           </div>
         </div>
