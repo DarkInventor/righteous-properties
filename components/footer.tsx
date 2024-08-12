@@ -25,18 +25,22 @@ function SiteFooter() {
             <br />
             Dubai Marina , P O Box - 416124
           </p>
-          <p className="flex items-center mb-2">
+          <a href="tel:+97143679444" className="flex items-center mb-2 hover:underline">
             <Phone size={16} className="mr-2" />
             +971 43679444
+          </a>
+          <p className="flex items-center mb-2">
+            <img src="/whatsapp-icon.png" alt="Whatsapp" className="mr-2" style={{ width: 16, height: 16 }} />
+            +971 549961779
           </p>
           <p className="flex items-center mb-2">
             <Mail size={16} className="mr-2" />
             info@righteousproperties.ae
           </p>
-          <p className="flex items-center mb-2">
+          <a href="http://www.righteousproperties.ae" className="flex items-center mb-2 hover:underline">
             <Globe size={16} className="mr-2" />
-            https://righteousproperties.ae
-          </p>
+            www.righteousproperties.ae
+          </a>
         </address>
       </div>
 

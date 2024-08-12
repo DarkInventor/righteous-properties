@@ -22,19 +22,19 @@ import {
 const investmentOptions = [
   {
     value: "2,50,000-5,00,000",
-    label: "2,50,000 $ - 5,00,000 $ USD",
+    label: "2,50,000 - 5,00,000 AED",
   },
   {
     value: "5,00,000-10,00,000",
-    label: "5,00,000 $ - 10,00,000 $ USD",
+    label: "5,00,000 $ - 10,00,000 AED",
   },
   {
     value: "10,00,000-15,00,000",
-    label: "10,00,000 $ - 15,00,000 $ USD",
+    label: "10,00,000 - 15,00,000 AED",
   },
   {
     value: "20,00,000-more",
-    label: "20,00,000 $ USD & more",
+    label: "20,00,000 $ AED & more",
   },
 ];
 
@@ -179,7 +179,7 @@ export default function ContactFormWithVideo() {
                     className="w-1/2"
                   />
                 </div>
-                <Button className="w-full">Submit Survey</Button>
+                <Button className="w-full hover:bg-primary/80">Submit Survey</Button>
               </CardContent>
             </Card>
           </div>

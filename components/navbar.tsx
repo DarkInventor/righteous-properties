@@ -51,7 +51,7 @@ function NavBar() {
     </div>
     {showMenu && (
       <div className="absolute top-full left-0 mt-2 bg-white shadow-md md:hidden">
-        <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline text-green-700 border-b">+971 43679444</a>
+        <a href="tel:+97143679444" className="block px-4 py-2 text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline text-green-700 border-b">+971 43679444</a>
         <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline border-b">BUY</a>
         <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline border-b">RENT</a>
         <a href="#" className="block px-4 py-2 text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline border-b">OFF PLANS</a>
@@ -92,7 +92,7 @@ function NavBar() {
         CONTACT US
       </a>
     </div>
-    <div className="flex justify-end items-center text-green-600 mr-0 lg:mr-10 hidden lg:flex"><Phone size={20} className="mr-2" /><span>+971 43679444</span></div>
+    <a href="tel:+97143679444" className="flex justify-end items-center text-green-600 mr-0 lg:mr-10 hidden lg:flex hover:text-green-700"><Phone size={20} className="mr-2" /><span>+971 43679444</span></a>
   </nav>
   )
 }
