@@ -287,7 +287,11 @@ export default function ContactFormWithVideo() {
   
       const responseData = await response.json();
       console.log("LeadSquared response:", responseData);
-      window.location.href = "https://righteousproperties.ae/";
+      alert("Thank you for sharing your details. Your details have been received. You will be redirected to our main site in 5s. Please close the window to exit.");
+      setTimeout(() => {
+        window.location.href = "https://righteousproperties.ae/";
+      }, 5000);
+      // window.location.href = "https://righteousproperties.ae/";
       // Handle success (e.g., show a message to the user)
     } catch (error) {
       console.error("Error submitting to LeadSquared:", error);
