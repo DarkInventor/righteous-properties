@@ -33,20 +33,24 @@ function NavBar() {
         )}
       </button>
       <div className="flex justify-center w-full md:w-auto ml-0 lg:ml-10 mr-0 sm:mr-2">
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          width={90}
-          height={90}
-          className="md:hidden"
-        />
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          width={124}
-          height={124}
-          className="hidden md:block"
-        />
+        <a href="https://righteousproperties.ae/" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={90}
+            height={90}
+            className="md:hidden"
+          />
+        </a>
+        <a href="https://righteousproperties.ae/" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={124}
+            height={124}
+            className="hidden md:block"
+          />
+        </a>
       </div>
     </div>
     {showMenu && (

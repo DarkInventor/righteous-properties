@@ -297,8 +297,9 @@ export default function ContactFormWithVideo() {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
+      <h1 className="flex mt-2 font-extrabold text-lg lg:text-2xl mx-auto  text-green-700 underline decoration-2 underline-offset-4 px-4 lg:px-0  ">Righteous Properties: Dubai Visionary Ventures</h1>
 
-      <div className="flex-grow mb-10 mt-10">
+      <div className="flex-grow mb-10 mt-5">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
           <div className="md:w-[60%] w-full mx-auto">
             <video autoPlay muted loop playsInline className="w-full h-full">
