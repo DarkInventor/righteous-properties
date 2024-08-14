@@ -287,6 +287,7 @@ export default function ContactFormWithVideo() {
   
       const responseData = await response.json();
       console.log("LeadSquared response:", responseData);
+      window.location.href = "https://righteousproperties.ae/";
       // Handle success (e.g., show a message to the user)
     } catch (error) {
       console.error("Error submitting to LeadSquared:", error);
@@ -297,7 +298,7 @@ export default function ContactFormWithVideo() {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
-      <h1 className="flex mt-2 font-extrabold text-lg lg:text-2xl mx-auto  text-green-700 underline decoration-2 underline-offset-4 px-4 lg:px-0  ">Righteous Properties: Dubai Visionary Ventures</h1>
+      <h1 className="flex mt-2 font-bold text-2xl md:text-3xl lg:text-3xl text-gray-900 px-4 ml-0 lg:ml-20 lg:px-0 lg:text-left mx-auto lg:mx-0 leading-tight">Righteous Properties: Dubai Visionary Ventures</h1>
 
       <div className="flex-grow mb-10 mt-5">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
