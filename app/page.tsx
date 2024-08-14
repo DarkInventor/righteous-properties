@@ -217,7 +217,7 @@ const investmentOptions = [
   },
   {
     value: "5,00,000-10,00,000",
-    label: "5,00,000 $ - 10,00,000 AED",
+    label: "5,00,000 - 10,00,000 AED",
   },
   {
     value: "10,00,000-15,00,000",
@@ -225,7 +225,7 @@ const investmentOptions = [
   },
   {
     value: "20,00,000-more",
-    label: "20,00,000 $ AED & more",
+    label: "20,00,000 AED & more",
   },
 ];
 
