@@ -1,189 +1,3 @@
-// "use client";
-// import { Button } from "@/components/ui/button";
-// import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-// import { Input } from "@/components/ui/input";
-// import React from "react";
-// import NavBar from "@/components/navbar";
-// import SiteFooter from "@/components/footer";
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/components/ui/popover";
-// import {
-//   Command,
-//   CommandEmpty,
-//   CommandGroup,
-//   CommandInput,
-//   CommandItem,
-//   CommandList,
-// } from "@/components/ui/command";
-
-// const investmentOptions = [
-//   {
-//     value: "2,50,000-5,00,000",
-//     label: "2,50,000 - 5,00,000 AED",
-//   },
-//   {
-//     value: "5,00,000-10,00,000",
-//     label: "5,00,000 $ - 10,00,000 AED",
-//   },
-//   {
-//     value: "10,00,000-15,00,000",
-//     label: "10,00,000 - 15,00,000 AED",
-//   },
-//   {
-//     value: "20,00,000-more",
-//     label: "20,00,000 $ AED & more",
-//   },
-// ];
-
-// const investmentTypes = [
-//   {
-//     value: "apartments",
-//     label: "Apartments",
-//   },
-//   {
-//     value: "town-house",
-//     label: "Town House",
-//   },
-//   {
-//     value: "villa",
-//     label: "Villa",
-//   },
-//   {
-//     value: "commercial",
-//     label: "Commercial",
-//   },
-// ];
-
-// export default function ContactFormWithVideo() {
-//   const [openInvestment, setOpenInvestment] = React.useState(false);
-//   const [openType, setOpenType] = React.useState(false);
-//   const [selectedInvestment, setSelectedInvestment] = React.useState<{ value: string; label: string; } | null>(null);
-//   const [selectedInvestmentType, setSelectedInvestmentType] = React.useState<{ value: string; label: string; } | null>(null);
-
-//   return (
-//     <div className="flex flex-col min-h-screen">
-//       <NavBar />
-
-//       <div className="flex-grow mb-10 mt-10">
-//         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
-//           <div className="md:w-[60%] w-full mx-auto">
-//             <video autoPlay muted loop playsInline className="w-full h-full">
-//               <source src="/righteous-vid.mp4" type="video/mp4" />
-//               Your browser does not support the video tag.
-//             </video>
-//           </div>
-//           <div className="w-full md:w-[400px] flex flex-col justify-center items-center mx-auto">
-//             <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-10 lg:mr-20">
-//               <form action="https://submit-form.com/oZnCQKeCf" className="space-y-4">
-//                 <CardHeader>
-//                   <CardTitle>How can we reach you?</CardTitle>
-//                 </CardHeader>
-//                 <CardContent className="space-y-4">
-//                   <Input type="text" placeholder="Name" name="name" className="w-full" required />
-//                   <Input type="email" placeholder="Email" name="email" className="w-full" required />
-//                   <div className="my-4">
-//                     <Popover open={openInvestment} onOpenChange={setOpenInvestment}>
-//                       <PopoverTrigger asChild>
-//                         <Button className="w-full justify-start bg-white text-gray-500 border">
-//                           {selectedInvestment ? selectedInvestment.label : "+ Select Investment Range"}
-//                         </Button>
-//                       </PopoverTrigger>
-//                       <PopoverContent className="p-0" side="bottom" align="start">
-//                         <Command>
-//                           <CommandInput placeholder="Select range..." />
-//                           <CommandList>
-//                             <CommandEmpty>No results found.</CommandEmpty>
-//                             <CommandGroup>
-//                               {investmentOptions.map((option) => (
-//                                 <CommandItem
-//                                   key={option.value}
-//                                   value={option.value}
-//                                   onSelect={(value) => {
-//                                     setSelectedInvestment(
-//                                       investmentOptions.find(
-//                                         (opt) => opt.value === value
-//                                       ) || null
-//                                     );
-//                                     setOpenInvestment(false);
-//                                   }}
-//                                 >
-//                                   {option.label}
-//                                 </CommandItem>
-//                               ))}
-//                             </CommandGroup>
-//                           </CommandList>
-//                         </Command>
-//                       </PopoverContent>
-//                     </Popover>
-//                     <input type="hidden" name="investment-range" value={selectedInvestment ? selectedInvestment.value : ''} />
-//                   </div>
-//                   <div className="my-4">
-//                     <Popover open={openType} onOpenChange={setOpenType}>
-//                       <PopoverTrigger asChild>
-//                         <Button className="w-full justify-start bg-white text-gray-500 border">
-//                           {selectedInvestmentType ? selectedInvestmentType.label : "+ Select Investment Type"}
-//                         </Button>
-//                       </PopoverTrigger>
-//                       <PopoverContent className="p-0" side="bottom" align="start">
-//                         <Command>
-//                           <CommandInput placeholder="Select type..." />
-//                           <CommandList>
-//                             <CommandEmpty>No results found.</CommandEmpty>
-//                             <CommandGroup>
-//                               {investmentTypes.map((type) => (
-//                                 <CommandItem
-//                                   key={type.value}
-//                                   value={type.value}
-//                                   onSelect={(value) => {
-//                                     setSelectedInvestmentType(
-//                                       investmentTypes.find(
-//                                         (opt) => opt.value === value
-//                                       ) || null
-//                                     );
-//                                     setOpenType(false);
-//                                   }}
-//                                 >
-//                                   {type.label}
-//                                 </CommandItem>
-//                               ))}
-//                             </CommandGroup>
-//                           </CommandList>
-//                         </Command>
-//                       </PopoverContent>
-//                     </Popover>
-//                     <input type="hidden" name="investment-type" value={selectedInvestmentType ? selectedInvestmentType.value : ''} />
-//                   </div>
-//                   <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" />
-//                   <div className="flex space-x-4">
-//                     <Input
-//                       type="text"
-//                       placeholder="Property Type (e.g., House, Apartment)"
-//                       name="property-type"
-//                       className="w-1/2"
-//                     />
-//                     <Input
-//                       type="text"
-//                       placeholder="Number of Bedrooms"
-//                       name="bedrooms"
-//                       className="w-1/2"
-//                     />
-//                   </div>
-//                   <Button type="submit" className="w-full hover:bg-primary/80">Submit Survey</Button>
-//                 </CardContent>
-//               </form>
-//             </Card>
-//           </div>
-//         </div>
-//       </div>
-
-//       <SiteFooter />
-//     </div>
-//   );
-// }
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -206,6 +20,8 @@ import {
 } from "@/components/ui/command";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+// @ts-ignore
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const investmentOptions = [
   {
@@ -313,9 +129,19 @@ export default function ContactFormWithVideo() {
     label: string;
   } | null>(null);
   const [phone, setPhone] = useState("");
+  const [captchaValue, setCaptchaValue] = useState("");
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
+
+    if (!validateCaptcha(captchaValue)) {
+      alert('Captcha Does Not Match');
+      return;
+    }
 
     const formData = {
       // @ts-ignore
@@ -383,6 +209,7 @@ export default function ContactFormWithVideo() {
               >
                 <CardHeader className="mx-auto flex justify-center items-center text-center">
                   <CardTitle>CONNNECT WITH US</CardTitle>
+                  <h1 className="font-semibold text-gray-700 text-red-500 text-sm">Please fill all the details* </h1>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Input
@@ -506,6 +333,7 @@ export default function ContactFormWithVideo() {
                     onChange={(phone) => setPhone(phone)}
                     style={{ width: "100%" }}
                     inputStyle={{ width: "100%" }}
+                    required={true}
                   />
 
                   <div className="my-4">
@@ -603,6 +431,18 @@ export default function ContactFormWithVideo() {
                       type="hidden"
                       name="bedrooms"
                       value={selectedBedrooms ? selectedBedrooms.value : ""}
+                    />
+                  </div>
+                  <div className="my-4">
+                    <LoadCanvasTemplate />
+                    <Input
+                      type="text"
+                      placeholder="Enter Captcha Value"
+                      name="user_captcha_input"
+                      id="user_captcha_input"
+                      onChange={(e) => setCaptchaValue(e.target.value)}
+                      className="w-full"
+                      required
                     />
                   </div>
                   <Button type="submit" className="w-full hover:bg-primary/80">
