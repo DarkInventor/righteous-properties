@@ -188,7 +188,6 @@
 
 
 
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -248,12 +247,62 @@ const investmentTypes = [
   },
 ];
 
+const propertyTypes = [
+  {
+    value: "buying",
+    label: "Buying",
+  },
+  {
+    value: "off-plan",
+    label: "Off Plan",
+  },
+  {
+    value: "rent",
+    label: "Rent",
+  },
+];
+
+const bedroomOptions = [
+  {
+    value: "studio",
+    label: "Studio",
+  },
+  {
+    value: "1",
+    label: "1",
+  },
+  {
+    value: "2",
+    label: "2",
+  },
+  {
+    value: "3",
+    label: "3",
+  },
+  {
+    value: "4",
+    label: "4",
+  },
+  {
+    value: "5",
+    label: "5",
+  },
+  {
+    value: "6",
+    label: "6+",
+  },
+];
+
 export default function ContactFormWithVideo() {
 
   const [openInvestment, setOpenInvestment] = useState(false);
   const [openType, setOpenType] = useState(false);
+  const [openPropertyType, setOpenPropertyType] = useState(false);
+  const [openBedrooms, setOpenBedrooms] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState<{ value: string; label: string; } | null>(null);
   const [selectedInvestmentType, setSelectedInvestmentType] = useState<{ value: string; label: string; } | null>(null);
+  const [selectedPropertyType, setSelectedPropertyType] = useState<{ value: string; label: string; } | null>(null);
+  const [selectedBedrooms, setSelectedBedrooms] = useState<{ value: string; label: string; } | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
@@ -265,10 +314,8 @@ export default function ContactFormWithVideo() {
       "Contact Number": event.currentTarget['contact-number'].value,
       "Investment Range": selectedInvestment ? selectedInvestment.value : '',
       "Investment Type": selectedInvestmentType ? selectedInvestmentType.value : '',
-      "Property Type": event.currentTarget['property-type'].value,
-      "Number of Bedrooms": event.currentTarget.bedrooms.value,
-      // Assuming "your-number" is another field you want to send
-      "your-number": event.currentTarget['your-number'] ? event.currentTarget['your-number'].value : '',
+      "Property Type": selectedPropertyType ? selectedPropertyType.value : '',
+      "Number of Bedrooms": selectedBedrooms ? selectedBedrooms.value : '',
     };
   
     try {
@@ -291,11 +338,8 @@ export default function ContactFormWithVideo() {
       setTimeout(() => {
         window.location.href = "https://righteousproperties.ae/";
       }, 5000);
-      // window.location.href = "https://righteousproperties.ae/";
-      // Handle success (e.g., show a message to the user)
     } catch (error) {
       console.error("Error submitting to LeadSquared:", error);
-      // Handle error (e.g., show an error message)
     }
   };
   
@@ -394,19 +438,77 @@ export default function ContactFormWithVideo() {
                     <input type="hidden" name="investment-type" value={selectedInvestmentType ? selectedInvestmentType.value : ''} />
                   </div>
                   <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" />
-                  <div className="flex space-x-4">
-                    <Input
-                      type="text"
-                      placeholder="Property Type (e.g., House, Apartment)"
-                      name="property-type"
-                      className="w-1/2"
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Number of Bedrooms"
-                      name="bedrooms"
-                      className="w-1/2"
-                    />
+                  <div className="my-4">
+                    <Popover open={openPropertyType} onOpenChange={setOpenPropertyType}>
+                      <PopoverTrigger asChild>
+                        <Button className="w-full justify-start bg-white text-gray-500 border">
+                          {selectedPropertyType ? selectedPropertyType.label : "+ Select Property Type"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="p-0" side="bottom" align="start">
+                        <Command>
+                          <CommandInput placeholder="Select property type..." />
+                          <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                              {propertyTypes.map((type) => (
+                                <CommandItem
+                                  key={type.value}
+                                  value={type.value}
+                                  onSelect={(value) => {
+                                    setSelectedPropertyType(
+                                      propertyTypes.find(
+                                        (opt) => opt.value === value
+                                      ) || null
+                                    );
+                                    setOpenPropertyType(false);
+                                  }}
+                                >
+                                  {type.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                    <input type="hidden" name="property-type" value={selectedPropertyType ? selectedPropertyType.value : ''} />
+                  </div>
+                  <div className="my-4">
+                    <Popover open={openBedrooms} onOpenChange={setOpenBedrooms}>
+                      <PopoverTrigger asChild>
+                        <Button className="w-full justify-start bg-white text-gray-500 border">
+                          {selectedBedrooms ? selectedBedrooms.label : "+ Select Number of Bedrooms"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="p-0" side="bottom" align="start">
+                        <Command>
+                          <CommandInput placeholder="Select number of bedrooms..." />
+                          <CommandList>
+                            <CommandEmpty>No results found.</CommandEmpty>
+                            <CommandGroup>
+                              {bedroomOptions.map((option) => (
+                                <CommandItem
+                                  key={option.value}
+                                  value={option.value}
+                                  onSelect={(value) => {
+                                    setSelectedBedrooms(
+                                      bedroomOptions.find(
+                                        (opt) => opt.value === value
+                                      ) || null
+                                    );
+                                    setOpenBedrooms(false);
+                                  }}
+                                >
+                                  {option.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                    <input type="hidden" name="bedrooms" value={selectedBedrooms ? selectedBedrooms.value : ''} />
                   </div>
                   <Button type="submit" className="w-full hover:bg-primary/80">Submit Survey</Button>
                 </CardContent>
