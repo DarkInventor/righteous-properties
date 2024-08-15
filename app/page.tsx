@@ -454,7 +454,7 @@ export default function ContactFormWithVideo() {
                         <Button className="w-full justify-start bg-white text-gray-500 border">
                           {selectedInvestmentType
                             ? selectedInvestmentType.label
-                            : "+ Select Investment Type"}
+                            : "+ Select Property Type"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent
@@ -517,7 +517,7 @@ export default function ContactFormWithVideo() {
                         <Button className="w-full justify-start bg-white text-gray-500 border">
                           {selectedPropertyType
                             ? selectedPropertyType.label
-                            : "+ Select Property Type"}
+                            : "+ Select Investment Type"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent
@@ -526,7 +526,7 @@ export default function ContactFormWithVideo() {
                         align="start"
                       >
                         <Command>
-                          <CommandInput placeholder="Select property type..." />
+                          <CommandInput placeholder="Select type..." />
                           <CommandList>
                             <CommandEmpty>No results found.</CommandEmpty>
                             <CommandGroup>
