@@ -202,7 +202,7 @@ export default function ContactFormWithVideo() {
             </video>
           </div>
           <div className="w-full md:w-[400px] flex flex-col justify-center items-center mx-auto">
-            <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-10 lg:mr-20">
+            <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-0 lg:mr-20">
               <form
                 onSubmit={(event) => handleSubmit(event)}
                 className="space-y-4"
