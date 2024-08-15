@@ -184,10 +184,6 @@
 //   );
 // }
 
-
-
-
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -208,6 +204,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 const investmentOptions = [
   {
@@ -294,47 +292,66 @@ const bedroomOptions = [
 ];
 
 export default function ContactFormWithVideo() {
-
   const [openInvestment, setOpenInvestment] = useState(false);
   const [openType, setOpenType] = useState(false);
   const [openPropertyType, setOpenPropertyType] = useState(false);
   const [openBedrooms, setOpenBedrooms] = useState(false);
-  const [selectedInvestment, setSelectedInvestment] = useState<{ value: string; label: string; } | null>(null);
-  const [selectedInvestmentType, setSelectedInvestmentType] = useState<{ value: string; label: string; } | null>(null);
-  const [selectedPropertyType, setSelectedPropertyType] = useState<{ value: string; label: string; } | null>(null);
-  const [selectedBedrooms, setSelectedBedrooms] = useState<{ value: string; label: string; } | null>(null);
+  const [selectedInvestment, setSelectedInvestment] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+  const [selectedInvestmentType, setSelectedInvestmentType] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+  const [selectedPropertyType, setSelectedPropertyType] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+  const [selectedBedrooms, setSelectedBedrooms] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
+  const [phone, setPhone] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
-  
+
     const formData = {
       // @ts-ignore
       Name: event.currentTarget.name.value,
       Email: event.currentTarget.email.value,
-      "Contact Number": event.currentTarget['contact-number'].value,
-      "Investment Range": selectedInvestment ? selectedInvestment.value : '',
-      "Investment Type": selectedInvestmentType ? selectedInvestmentType.value : '',
-      "Property Type": selectedPropertyType ? selectedPropertyType.value : '',
-      "Number of Bedrooms": selectedBedrooms ? selectedBedrooms.value : '',
+      "Contact Number": event.currentTarget["contact-number"].value,
+      "Investment Range": selectedInvestment ? selectedInvestment.value : "",
+      "Investment Type": selectedInvestmentType
+        ? selectedInvestmentType.value
+        : "",
+      "Property Type": selectedPropertyType ? selectedPropertyType.value : "",
+      "Number of Bedrooms": selectedBedrooms ? selectedBedrooms.value : "",
     };
-  
+
     try {
       // Updated to use your webhook URL
-      const response = await fetch('https://ulc-api.leadsquaredapps.com/v1/UniversalLeadSync.svc/RealtimeWebhook/Connector/74238/300416b6-4a1c-44c1-bc8c-f4ae3fc68993/ba2ef1b03a043786bbd06e546e7e0df53f49f0b982b7294efbb3be6cfaacc80d600578ebc6f017752e6aa8fed15ef9aa', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
+      const response = await fetch(
+        "https://ulc-api.leadsquaredapps.com/v1/UniversalLeadSync.svc/RealtimeWebhook/Connector/74238/300416b6-4a1c-44c1-bc8c-f4ae3fc68993/ba2ef1b03a043786bbd06e546e7e0df53f49f0b982b7294efbb3be6cfaacc80d600578ebc6f017752e6aa8fed15ef9aa",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
+
       const responseData = await response.json();
       console.log("LeadSquared response:", responseData);
-      alert("Thank you for sharing your details. Your details have been received. You will be redirected to our main site in 5s. Please close the window to exit.");
+      alert(
+        "Thank you for sharing your details. Your details have been received. You will be redirected to our main site in 5s. Please close the window to exit."
+      );
       setTimeout(() => {
         window.location.href = "https://righteousproperties.ae/";
       }, 5000);
@@ -342,11 +359,13 @@ export default function ContactFormWithVideo() {
       console.error("Error submitting to LeadSquared:", error);
     }
   };
-  
+
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
-      <h1 className="flex mt-2 font-bold text-2xl md:text-3xl lg:text-3xl text-gray-900 px-4 ml-0 lg:ml-20 lg:px-0 lg:text-left mx-auto lg:mx-0 leading-tight">Righteous Properties: Dubai Visionary Ventures</h1>
+      <h1 className="flex mt-2 font-bold text-2xl md:text-3xl lg:text-3xl text-gray-900 px-4 ml-0 lg:ml-20 lg:px-0 lg:text-left mx-auto lg:mx-0 leading-tight">
+        Righteous Properties: Dubai Visionary Ventures
+      </h1>
 
       <div className="flex-grow mb-10 mt-5">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
@@ -358,21 +377,45 @@ export default function ContactFormWithVideo() {
           </div>
           <div className="w-full md:w-[400px] flex flex-col justify-center items-center mx-auto">
             <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-10 lg:mr-20">
-              <form onSubmit={(event) => handleSubmit(event)} className="space-y-4">
-                <CardHeader>
-                  <CardTitle>How can we reach you?</CardTitle>
+              <form
+                onSubmit={(event) => handleSubmit(event)}
+                className="space-y-4"
+              >
+                <CardHeader className="mx-auto flex justify-center items-center text-center">
+                  <CardTitle>CONNNECT WITH US</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <Input type="text" placeholder="Name" name="name" className="w-full" required />
-                  <Input type="email" placeholder="Email" name="email" className="w-full" required />
+                  <Input
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    className="w-full"
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    className="w-full"
+                    required
+                  />
                   <div className="my-4">
-                    <Popover open={openInvestment} onOpenChange={setOpenInvestment}>
+                    <Popover
+                      open={openInvestment}
+                      onOpenChange={setOpenInvestment}
+                    >
                       <PopoverTrigger asChild>
                         <Button className="w-full justify-start bg-white text-gray-500 border">
-                          {selectedInvestment ? selectedInvestment.label : "+ Select Investment Range"}
+                          {selectedInvestment
+                            ? selectedInvestment.label
+                            : "+ Select Investment Range"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="p-0" side="bottom" align="start">
+                      <PopoverContent
+                        className="p-0"
+                        side="bottom"
+                        align="start"
+                      >
                         <Command>
                           <CommandInput placeholder="Select range..." />
                           <CommandList>
@@ -399,16 +442,26 @@ export default function ContactFormWithVideo() {
                         </Command>
                       </PopoverContent>
                     </Popover>
-                    <input type="hidden" name="investment-range" value={selectedInvestment ? selectedInvestment.value : ''} />
+                    <input
+                      type="hidden"
+                      name="investment-range"
+                      value={selectedInvestment ? selectedInvestment.value : ""}
+                    />
                   </div>
                   <div className="my-4">
                     <Popover open={openType} onOpenChange={setOpenType}>
                       <PopoverTrigger asChild>
                         <Button className="w-full justify-start bg-white text-gray-500 border">
-                          {selectedInvestmentType ? selectedInvestmentType.label : "+ Select Investment Type"}
+                          {selectedInvestmentType
+                            ? selectedInvestmentType.label
+                            : "+ Select Investment Type"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="p-0" side="bottom" align="start">
+                      <PopoverContent
+                        className="p-0"
+                        side="bottom"
+                        align="start"
+                      >
                         <Command>
                           <CommandInput placeholder="Select type..." />
                           <CommandList>
@@ -435,17 +488,43 @@ export default function ContactFormWithVideo() {
                         </Command>
                       </PopoverContent>
                     </Popover>
-                    <input type="hidden" name="investment-type" value={selectedInvestmentType ? selectedInvestmentType.value : ''} />
+                    <input
+                      type="hidden"
+                      name="investment-type"
+                      value={
+                        selectedInvestmentType
+                          ? selectedInvestmentType.value
+                          : ""
+                      }
+                    />
                   </div>
-                  <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" />
+                  {/* <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" /> */}
+                  <PhoneInput
+                    defaultCountry="ae"
+                    value={phone}
+                    name="contact-number" 
+                    onChange={(phone) => setPhone(phone)}
+                    style={{ width: "100%" }}
+                    inputStyle={{ width: "100%" }}
+                  />
+
                   <div className="my-4">
-                    <Popover open={openPropertyType} onOpenChange={setOpenPropertyType}>
+                    <Popover
+                      open={openPropertyType}
+                      onOpenChange={setOpenPropertyType}
+                    >
                       <PopoverTrigger asChild>
                         <Button className="w-full justify-start bg-white text-gray-500 border">
-                          {selectedPropertyType ? selectedPropertyType.label : "+ Select Property Type"}
+                          {selectedPropertyType
+                            ? selectedPropertyType.label
+                            : "+ Select Property Type"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="p-0" side="bottom" align="start">
+                      <PopoverContent
+                        className="p-0"
+                        side="bottom"
+                        align="start"
+                      >
                         <Command>
                           <CommandInput placeholder="Select property type..." />
                           <CommandList>
@@ -472,16 +551,28 @@ export default function ContactFormWithVideo() {
                         </Command>
                       </PopoverContent>
                     </Popover>
-                    <input type="hidden" name="property-type" value={selectedPropertyType ? selectedPropertyType.value : ''} />
+                    <input
+                      type="hidden"
+                      name="property-type"
+                      value={
+                        selectedPropertyType ? selectedPropertyType.value : ""
+                      }
+                    />
                   </div>
                   <div className="my-4">
                     <Popover open={openBedrooms} onOpenChange={setOpenBedrooms}>
                       <PopoverTrigger asChild>
                         <Button className="w-full justify-start bg-white text-gray-500 border">
-                          {selectedBedrooms ? selectedBedrooms.label : "+ Select Number of Bedrooms"}
+                          {selectedBedrooms
+                            ? selectedBedrooms.label
+                            : "+ Select Number of Bedrooms"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="p-0" side="bottom" align="start">
+                      <PopoverContent
+                        className="p-0"
+                        side="bottom"
+                        align="start"
+                      >
                         <Command>
                           <CommandInput placeholder="Select number of bedrooms..." />
                           <CommandList>
@@ -508,9 +599,15 @@ export default function ContactFormWithVideo() {
                         </Command>
                       </PopoverContent>
                     </Popover>
-                    <input type="hidden" name="bedrooms" value={selectedBedrooms ? selectedBedrooms.value : ''} />
+                    <input
+                      type="hidden"
+                      name="bedrooms"
+                      value={selectedBedrooms ? selectedBedrooms.value : ""}
+                    />
                   </div>
-                  <Button type="submit" className="w-full hover:bg-primary/80">Submit Survey</Button>
+                  <Button type="submit" className="w-full hover:bg-primary/80">
+                    Submit
+                  </Button>
                 </CardContent>
               </form>
             </Card>
