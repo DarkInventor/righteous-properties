@@ -21,7 +21,7 @@ import {
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 // @ts-ignore
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 
 const investmentOptions = [
   {
@@ -129,11 +129,11 @@ export default function ContactFormWithVideo() {
     label: string;
   } | null>(null);
   const [phone, setPhone] = useState("");
-  const [captchaValue, setCaptchaValue] = useState("");
+  // const [captchaValue, setCaptchaValue] = useState("");
 
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  // useEffect(() => {
+  //   loadCaptchaEnginge(6);
+  // }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
@@ -217,14 +217,12 @@ export default function ContactFormWithVideo() {
                     placeholder="Name"
                     name="name"
                     className="w-full"
-                    required
                   />
                   <Input
                     type="email"
                     placeholder="Email"
                     name="email"
                     className="w-full"
-                    required
                   />
                   <div className="my-4">
                     <Popover
@@ -333,7 +331,6 @@ export default function ContactFormWithVideo() {
                     onChange={(phone) => setPhone(phone)}
                     style={{ width: "100%" }}
                     inputStyle={{ width: "100%" }}
-                    required={true}
                   />
 
                   <div className="my-4">
@@ -433,7 +430,38 @@ export default function ContactFormWithVideo() {
                       value={selectedBedrooms ? selectedBedrooms.value : ""}
                     />
                   </div>
-                  <div className="my-4">
+                  <div className="my-4 border p-4 rounded-md">
+                    <fieldset>
+                      <legend className="block text-sm font-medium text-gray-700">What date did you attend the event?</legend>
+                      <div className="mt-2 flex items-center space-x-4">
+                        <div className="flex items-center">
+                          <input
+                            id="date-24-august-2024"
+                            name="event-date"
+                            type="radio"
+                            value="24-august-2024"
+                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
+                          />
+                          <label htmlFor="date-24-august-2024" className="ml-2 block text-sm font-medium text-gray-700">
+                            24 August, 2024
+                          </label>
+                        </div>
+                        <div className="flex items-center">
+                          <input
+                            id="date-25-august-2024"
+                            name="event-date"
+                            type="radio"
+                            value="25-august-2024"
+                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
+                          />
+                          <label htmlFor="date-25-august-2024" className="ml-2 block text-sm font-medium text-gray-700">
+                            25 August, 2024
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  {/* <div className="my-4">
                     <LoadCanvasTemplate />
                     <Input
                       type="text"
@@ -444,7 +472,7 @@ export default function ContactFormWithVideo() {
                       className="w-full"
                       required
                     />
-                  </div>
+                  </div> */}
                   <Button type="submit" className="w-full hover:bg-primary/80">
                     Submit
                   </Button>
