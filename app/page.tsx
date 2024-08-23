@@ -138,10 +138,10 @@ export default function ContactFormWithVideo() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
 
-    if (!validateCaptcha(captchaValue)) {
-      alert('Captcha Does Not Match');
-      return;
-    }
+    // if (!validateCaptcha(captchaValue)) {
+    //   alert('Captcha Does Not Match');
+    //   return;
+    // }
 
     const formData = {
       // @ts-ignore
