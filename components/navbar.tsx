@@ -66,31 +66,31 @@ function NavBar() {
     )}
     <div className="hidden md:flex justify-center flex-grow items-center space-x-6">
       <a
-        href="#"
+        href="https://righteousproperties.ae/property-type/sales/"
         className="text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline hover:underline hover:underline-offset-8 hover:decoration-green-600 hover:decoration-2"
       >
         BUY
       </a>
       <a
-        href="#"
+        href="https://righteousproperties.ae/property-type/rentals/"
         className="text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline hover:underline hover:underline-offset-8 hover:decoration-green-600 hover:decoration-2"
       >
         RENT
       </a>
       <a
-        href="#"
+        href="https://righteousproperties.ae/property-type/off-plans/"
         className="text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline hover:underline hover:underline-offset-8 hover:decoration-green-600 hover:decoration-2"
       >
         OFF PLANS
       </a>
       <a
-        href="#"
+        href="https://righteousproperties.ae/about-us/"
         className="text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline hover:underline hover:underline-offset-8 hover:decoration-green-600 hover:decoration-2"
       >
         MORE
       </a>
       <a
-        href="#"
+        href="https://righteousproperties.ae/contact-us/"
         className="text-gray-600 hover:text-green-600 font-semibold text-sm custom-underline hover:underline hover:underline-offset-8 hover:decoration-green-600 hover:decoration-2"
       >
         CONTACT US

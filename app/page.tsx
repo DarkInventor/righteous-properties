@@ -197,7 +197,7 @@ export default function ContactFormWithVideo() {
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
           <div className="md:w-[60%] w-full mx-auto">
             <video autoPlay muted loop playsInline className="w-full h-full">
-              <source src="/righteous-vid.mp4" type="video/mp4" />
+              <source src="/landing-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -208,7 +208,7 @@ export default function ContactFormWithVideo() {
                 className="space-y-4"
               >
                 <CardHeader className="mx-auto flex justify-center items-center text-center">
-                  <CardTitle>CONNNECT WITH US</CardTitle>
+                  <CardTitle>Connect With US</CardTitle>
                   <h1 className="font-semibold text-gray-700 text-red-500 text-sm">Please fill all the details* </h1>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -436,26 +436,26 @@ export default function ContactFormWithVideo() {
                       <div className="mt-2 flex items-center space-x-4">
                         <div className="flex items-center">
                           <input
-                            id="date-24-august-2024"
+                            id="date-23-november-2024"
                             name="event-date"
                             type="radio"
-                            value="24-august-2024"
+                            value="23-november-2024"
                             className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
                           />
-                          <label htmlFor="date-24-august-2024" className="ml-2 block text-sm font-medium text-gray-700">
-                            24 August, 2024
+                          <label htmlFor="23-november-2024" className="ml-2 block text-sm font-medium text-gray-700">
+                            23 November, 2024
                           </label>
                         </div>
                         <div className="flex items-center">
                           <input
-                            id="date-25-august-2024"
+                            id="date-24-november-2024"
                             name="event-date"
                             type="radio"
-                            value="25-august-2024"
+                            value="24-november-2024"
                             className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
                           />
-                          <label htmlFor="date-25-august-2024" className="ml-2 block text-sm font-medium text-gray-700">
-                            25 August, 2024
+                          <label htmlFor="date-24-november-2024" className="ml-2 block text-sm font-medium text-gray-700">
+                            24 November, 2024
                           </label>
                         </div>
                       </div>
