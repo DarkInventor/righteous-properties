@@ -204,6 +204,8 @@ export default function ContactFormWithVideo() {
               autoPlay 
               loop 
               playsInline 
+              muted
+              controls
               className="w-full h-full"
             >
               <source src="/landing-video.mp4" type="video/mp4" />
