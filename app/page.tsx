@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavBar from "@/components/navbar";
 import SiteFooter from "@/components/footer";
 import {
@@ -108,6 +108,40 @@ const bedroomOptions = [
 ];
 
 export default function ContactFormWithVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      video.muted = false
+      video.autoplay = true
+      video.loop = true
+      video.playsInline = true
+
+      const playVideo = () => {
+        video.play().catch(error => {
+          console.error('Autoplay was prevented:', error)
+        })
+      }
+
+      playVideo()
+
+      // Try to play video again when visibility changes (e.g., tab becomes active)
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          playVideo()
+        }
+      })
+
+      // Try to play video when it's loaded
+      video.addEventListener('loadedmetadata', playVideo)
+
+      return () => {
+        document.removeEventListener('visibilitychange', playVideo)
+        video.removeEventListener('loadedmetadata', playVideo)
+      }
+    }
+  }, [])
   const [openInvestment, setOpenInvestment] = useState(false);
   const [openType, setOpenType] = useState(false);
   const [openPropertyType, setOpenPropertyType] = useState(false);
@@ -196,7 +230,12 @@ export default function ContactFormWithVideo() {
       <div className="flex-grow mb-10 mt-5">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
           <div className="md:w-[60%] w-full mx-auto">
-            <video autoPlay muted loop playsInline className="w-full h-full">
+             <video 
+              ref={videoRef}
+              className="w-full h-full"
+              autoPlay
+              loop
+            >
               <source src="/landing-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
