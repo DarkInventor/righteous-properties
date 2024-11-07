@@ -111,11 +111,11 @@ export default function ThankYouPage() {
           fbq('track', 'Lead');
         `}
       </Script>
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-white px-4">
         <div className="max-w-md w-full text-center p-8 border border-gray-200 rounded-lg shadow-sm">
           <h1 className="text-2xl font-bold mb-4 text-black">Thank You!</h1>
           <p className="text-gray-700 mb-4">
-            Thank you for sharing your details. Your details have been received.
+            Our property experts will get in touch with you shortly.
           </p>
           {countdown > 0 ? (
             <p className="text-gray-700 mb-6">
@@ -124,7 +124,7 @@ export default function ThankYouPage() {
           ) : (
             <Link 
               href="https://righteousproperties.ae/"
-              className="inline-block bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition duration-300 mb-6"
+              className="inline-block bg-green-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded transition duration-300 mb-6"
             >
               Visit Our Main Site
             </Link>
