@@ -175,12 +175,12 @@ export default function ContactFormWithVideo() {
 
       const responseData = await response.json();
       console.log("LeadSquared response:", responseData);
-      alert(
-        "Thank you for sharing your details. Your details have been received. You will be redirected to our main site in 5s. Please close the window to exit."
-      );
-      setTimeout(() => {
-        window.location.href = "https://righteousproperties.ae/";
-      }, 5000);
+      // alert(
+      //   "Thank you for sharing your details. Your details have been received. You will be redirected to our main site in 5s. Please close the window to exit."
+      // );
+      // setTimeout(() => {
+        window.location.href = "/thank-you";
+      // }, 5000);
     } catch (error) {
       console.error("Error submitting to LeadSquared:", error);
     }
