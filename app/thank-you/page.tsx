@@ -176,7 +176,7 @@ export default function ThankYouPage() {
             We look forward to assisting you and helping you find the perfect property!
           </p>
           <p className="text-gray-700 mb-8 font-semibold">
-            Stay connected, and we'll be in touch soon!
+            Stay connected, and we&apos;ll be in touch soon!
           </p>
           {countdown > 0 ? (
             <p className="text-gray-700 mb-6">
