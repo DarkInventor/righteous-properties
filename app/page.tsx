@@ -336,7 +336,7 @@ export default function ContactFormWithVideo() {
                   </div>
                   {/* <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" /> */}
                   <PhoneInput
-                    defaultCountry="ae"
+                    defaultCountry="in"
                     value={phone}
                     name="contact-number" 
                     onChange={(phone) => setPhone(phone)}
