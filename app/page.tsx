@@ -187,7 +187,7 @@ export default function ContactFormWithVideo() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <><div className="flex flex-col min-h-screen">
       <NavBar />
       <h1 className="flex mt-2 font-bold text-2xl md:text-3xl lg:text-3xl text-gray-900 px-4 ml-0 lg:ml-20 lg:px-0 lg:text-left mx-auto lg:mx-0 leading-tight">
         Righteous Properties: Dubai Visionary Ventures
@@ -196,14 +196,10 @@ export default function ContactFormWithVideo() {
       <div className="flex-grow mb-10 mt-5">
         <div className="flex flex-col md:flex-row h-full bg-white px-4 mx-auto space-y-8 md:space-y-0 md:space-x-10">
           <div className="md:w-[60%] w-full mx-auto">
-            {/* <video autoPlay loop  controls className="w-full h-full">
-              <source src="/landing-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video> */}
-             <video 
-              autoPlay 
-              loop 
-              playsInline 
+            <video
+              autoPlay
+              loop
+              playsInline
               muted
               controls
               className="w-full h-full"
@@ -211,7 +207,11 @@ export default function ContactFormWithVideo() {
               <source src="/landing-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            
+
           </div>
+
+
           <div className="w-full md:w-[400px] flex flex-col justify-center items-center mx-auto">
             <Card className="w-full max-w-lg mr-0 ml-0 lg:ml-0 lg:mr-20">
               <form
@@ -227,14 +227,12 @@ export default function ContactFormWithVideo() {
                     type="text"
                     placeholder="Name"
                     name="name"
-                    className="w-full"
-                  />
+                    className="w-full" />
                   <Input
                     type="email"
                     placeholder="Email"
                     name="email"
-                    className="w-full"
-                  />
+                    className="w-full" />
                   <div className="my-4">
                     <Popover
                       open={openInvestment}
@@ -268,7 +266,7 @@ export default function ContactFormWithVideo() {
                                       ) || null
                                     );
                                     setOpenInvestment(false);
-                                  }}
+                                  } }
                                 >
                                   {option.label}
                                 </CommandItem>
@@ -281,8 +279,7 @@ export default function ContactFormWithVideo() {
                     <input
                       type="hidden"
                       name="investment-range"
-                      value={selectedInvestment ? selectedInvestment.value : ""}
-                    />
+                      value={selectedInvestment ? selectedInvestment.value : ""} />
                   </div>
                   <div className="my-4">
                     <Popover open={openType} onOpenChange={setOpenType}>
@@ -314,7 +311,7 @@ export default function ContactFormWithVideo() {
                                       ) || null
                                     );
                                     setOpenType(false);
-                                  }}
+                                  } }
                                 >
                                   {type.label}
                                 </CommandItem>
@@ -327,22 +324,18 @@ export default function ContactFormWithVideo() {
                     <input
                       type="hidden"
                       name="investment-type"
-                      value={
-                        selectedInvestmentType
-                          ? selectedInvestmentType.value
-                          : ""
-                      }
-                    />
+                      value={selectedInvestmentType
+                        ? selectedInvestmentType.value
+                        : ""} />
                   </div>
                   {/* <Input type="text" placeholder="Contact Number" name="contact-number" className="w-full" /> */}
                   <PhoneInput
                     defaultCountry="in"
                     value={phone}
-                    name="contact-number" 
+                    name="contact-number"
                     onChange={(phone) => setPhone(phone)}
                     style={{ width: "100%" }}
-                    inputStyle={{ width: "100%" }}
-                  />
+                    inputStyle={{ width: "100%" }} />
 
                   <div className="my-4">
                     <Popover
@@ -377,7 +370,7 @@ export default function ContactFormWithVideo() {
                                       ) || null
                                     );
                                     setOpenPropertyType(false);
-                                  }}
+                                  } }
                                 >
                                   {type.label}
                                 </CommandItem>
@@ -390,10 +383,7 @@ export default function ContactFormWithVideo() {
                     <input
                       type="hidden"
                       name="property-type"
-                      value={
-                        selectedPropertyType ? selectedPropertyType.value : ""
-                      }
-                    />
+                      value={selectedPropertyType ? selectedPropertyType.value : ""} />
                   </div>
                   <div className="my-4">
                     <Popover open={openBedrooms} onOpenChange={setOpenBedrooms}>
@@ -425,7 +415,7 @@ export default function ContactFormWithVideo() {
                                       ) || null
                                     );
                                     setOpenBedrooms(false);
-                                  }}
+                                  } }
                                 >
                                   {option.label}
                                 </CommandItem>
@@ -438,8 +428,7 @@ export default function ContactFormWithVideo() {
                     <input
                       type="hidden"
                       name="bedrooms"
-                      value={selectedBedrooms ? selectedBedrooms.value : ""}
-                    />
+                      value={selectedBedrooms ? selectedBedrooms.value : ""} />
                   </div>
                   <div className="my-4 border p-4 rounded-md">
                     <fieldset>
@@ -451,8 +440,7 @@ export default function ContactFormWithVideo() {
                             name="event-date"
                             type="radio"
                             value="23-november-2024"
-                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
-                          />
+                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300" />
                           <label htmlFor="23-november-2024" className="ml-2 block text-sm font-medium text-gray-700">
                             23 November, 2024
                           </label>
@@ -463,8 +451,7 @@ export default function ContactFormWithVideo() {
                             name="event-date"
                             type="radio"
                             value="24-november-2024"
-                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300"
-                          />
+                            className="focus:ring-primary h-4 w-4 text-primary border-gray-300" />
                           <label htmlFor="date-24-november-2024" className="ml-2 block text-sm font-medium text-gray-700">
                             24 November, 2024
                           </label>
@@ -473,17 +460,17 @@ export default function ContactFormWithVideo() {
                     </fieldset>
                   </div>
                   {/* <div className="my-4">
-                    <LoadCanvasTemplate />
-                    <Input
-                      type="text"
-                      placeholder="Enter Captcha Value"
-                      name="user_captcha_input"
-                      id="user_captcha_input"
-                      onChange={(e) => setCaptchaValue(e.target.value)}
-                      className="w-full"
-                      required
-                    />
-                  </div> */}
+      <LoadCanvasTemplate />
+      <Input
+        type="text"
+        placeholder="Enter Captcha Value"
+        name="user_captcha_input"
+        id="user_captcha_input"
+        onChange={(e) => setCaptchaValue(e.target.value)}
+        className="w-full"
+        required
+      />
+    </div> */}
                   <Button type="submit" className="w-full hover:bg-primary/80">
                     Submit
                   </Button>
@@ -493,8 +480,8 @@ export default function ContactFormWithVideo() {
           </div>
         </div>
       </div>
+   <SiteFooter />
 
-      <SiteFooter />
-    </div>
+    </div></>
   );
 }
