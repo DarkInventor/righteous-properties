@@ -13,8 +13,8 @@ function SiteFooter() {
         <p>Address: Block No. 9, Jan Marg, 17A, Sector 17, Chandigarh, 160017, India</p>
         <p className="mt-4 font-bold">Date & Time:</p>
         <ul className="list-disc list-inside">
-          <li>Saturday, 23rd November 2024, 9 AM - 9 PM</li>
-          <li>Sunday, 24th November 2024, 9 AM - 6 PM</li>
+          <li>Saturday, 23rd November 2024, 10 AM - 9 PM</li>
+          <li>Sunday, 24th November 2024, 10 AM - 6 PM</li>
         </ul>
         <p className="mt-4 font-bold">Featured Projects:</p>
         <p>DAMAC Island, Sun City, Violet, Lagoons Views, Golf Greens, Canal Crown, Altitude DAMAC Bay</p>
