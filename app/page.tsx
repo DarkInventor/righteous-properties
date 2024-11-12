@@ -227,12 +227,16 @@ export default function ContactFormWithVideo() {
                     type="text"
                     placeholder="Name"
                     name="name"
-                    className="w-full" />
+                    className="w-full" 
+                    required
+                    />
                   <Input
                     type="email"
                     placeholder="Email"
                     name="email"
-                    className="w-full" />
+                    className="w-full" 
+                    required
+                    />
                   <div className="my-4">
                     <Popover
                       open={openInvestment}
@@ -335,7 +339,9 @@ export default function ContactFormWithVideo() {
                     name="contact-number"
                     onChange={(phone) => setPhone(phone)}
                     style={{ width: "100%" }}
-                    inputStyle={{ width: "100%" }} />
+                    inputStyle={{ width: "100%" }} 
+                    required
+                    />
 
                   <div className="my-4">
                     <Popover
